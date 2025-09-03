@@ -72,7 +72,7 @@ function displayPlayers(){
             <p>${cardInfo.gols}</p>
             <p>${cardInfo.assistencias}</p>
             <p>${cardInfo.jogos}</p>
-            <p>${cardInfo.favorita}</p>
+            ${cardInfo.favorita ? `<img src="/images/starOff.png" alt="Imagem do post" style="max-width:50px;">` : `<img src="/images/starOn.png" alt="Imagem do post" style="max-width:50px;">`}
         `;
 
         playerCardList.append(cardElement);
