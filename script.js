@@ -50,3 +50,43 @@ let jogadoras = [
     "favorita": false
   }
 ]
+
+window.onload = function(){
+    saveCards();
+    displayPlayers();
+}
+
+//
+function displayPlayers(){
+    const playerCardList = document.getElementById('cardList');
+    playerCardList.innerHTML = '';
+
+    jogadoras.forEach((cardInfo, index) => {
+        const cardElement = document.createElement('div');
+        
+        cardElement.innerHTML = `
+            <h1>${cardInfo.nome}</h1>
+            <h2>${cardInfo.posicao}</h2>
+            <p>${cardInfo.clube}</p>
+            <img src="${cardInfo.foto}"> </img>
+            <p>${cardInfo.gols}</p>
+            <p>${cardInfo.assistencias}</p>
+            <p>${cardInfo.jogos}</p>
+            <p>${cardInfo.favorita}</p>
+        `;
+
+        playerCardList.append(cardElement);
+    })
+}
+
+function saveCards(){
+    localStorage.setItem("jogadoras", JSON.stringify(jogadoras));
+}
+
+function loadCards(){
+    const playersInfo = localStorage.getItem("jogadoras");
+
+    if(playersInfo){
+        jogadoras = JSON.parse(playersInfo);
+    }
+}
