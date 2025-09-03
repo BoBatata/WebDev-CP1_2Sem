@@ -56,7 +56,7 @@ window.onload = function(){
     displayPlayers();
 }
 
-//
+// Carrega os Cards e exibe na página.
 function displayPlayers(){
     const playerCardList = document.getElementById('cardList');
     playerCardList.innerHTML = '';
@@ -79,10 +79,12 @@ function displayPlayers(){
     })
 }
 
+//Salva o banco de dados no localStorage e transforma em um JSON.
 function saveCards(){
     localStorage.setItem("jogadoras", JSON.stringify(jogadoras));
 }
 
+//Carrega o banco de dados do localStorage e transforma em um objeto.
 function loadCards(){
     const playersInfo = localStorage.getItem("jogadoras");
 
