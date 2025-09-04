@@ -52,9 +52,14 @@ let jogadoras = [
 ]
 
 window.onload = function(){
-    saveCards();
+    loadCards();
     displayPlayers();
+
+    document.querySelector("#novaJogadora").addEventListener("submit", addJogadora);
+
+    saveCards();
 }
+
 
 // Carrega os Cards e exibe na página.
 function displayPlayers(){
@@ -126,7 +131,7 @@ function addJogadora(event){
     jogadoras.unshift(novaJogadora); // UNSHIFT: Adiciona a nova jogadora no inicio do array
 
     alert("Jogadora adicionada com sucesso!");
-    document.querySelector("novaJogadora").reset(); // Limpa o formulário
+    document.querySelector("#novaJogadora").reset(); // Limpa o formulário
 
     displayPlayers();
     saveCards();
