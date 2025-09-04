@@ -5,11 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CP-1 WebDev</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    
-    <div id="cardList"></div>
+        <header>
+        <h1> Checkpoint 4 </h1>
+    </header>
 
-    <script src="script.js"></script>
+
+<h1 id="cadastro"> Cadastro de Jogadoras </h1>
+<div class="container">
+
+     <!-- Formulário para criar um novo post -->
+
+     <form id="novaJogadora">
+
+        <i class="fa-regular fa-image"></i> <label for="foto"> Insira uma foto da jogadora:</label><br>
+        <input type="text" class="campoForm" id="foto" placeholder="Insira a URL aqui"><br>
+
+        <label for="nome"> Nome da jogadora:</label><br>
+        <textarea class="campoForm" id="nome" rows="1" cols="30" placeholder="Ex: Isabela "></textarea><br>
+        
+        <label for="posicao"> Posição jogada:</label><br>
+        <textarea class="campoForm" id="posicao" rows="1" cols="30" placeholder="Ex: Atacante"></textarea><br>
+        
+        <label for="clube"> Clube:</label><br>
+        <textarea class="campoForm" id="clube" rows="1" cols="30" placeholder="Ex: Corinthians"></textarea><br>
+        
+        <label for="gols"> Quantidade gols feitos:</label><br>
+        <textarea class="campoForm" id="gols" rows="1" cols="30" placeholder="Ex: 23"></textarea><br>
+        
+        <label for="assistencias"> Quantidade de assistências feitas:</label><br>
+        <textarea class="campoForm" id="assistencias" rows="1" cols="30" placeholder="Ex: 19"></textarea><br>
+        
+        <label for="jogos"> Quantidade de jogos jogados:</label><br>
+        <textarea class="campoForm" id="jogos" rows="1" cols="30" placeholder="Ex: 45"></textarea><br>
+        
+        
+        <!-- <i class="fa-solid fa-list"></i> <label for="postCategory">Categoria:</label>
+        <select class="campoForm" id="postCategory">
+            <option value="Todos">Todos</option>
+            <option value="Notícias">Notícias</option>
+            <option value="Dicas">Dicas</option>
+            <option value="Eventos">Eventos</option>
+        </select><br> -->
+        
+        <button type="submit" class="campoForm" id="buttonSubmit">Adicionar Jogadora</button>
+    </form>
+</div>
+    <h1 id="jogadorasCadastradas"> Jogadoras Cadastradas </h1>
+
+    <!-- Lista de jogadoras -->
+<div id="cardList"></div>
+
+
+
+
+<script src="https://kit.fontawesome.com/129b440489.js" crossorigin="anonymous"></script>
+<div id="cardList"></div>
+<script src="script.js"></script>
+
 </body>
 </html>

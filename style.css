@@ -1,0 +1,84 @@
+/* COLOR PALLETE: 
+F72585 rosa
+7209B7 roxo
+4361EE azul
+4CC9F0 azul claro
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+header {
+    text-align: center;
+    background-color: #7209B7;
+    color: white;
+    padding: 10px 0;
+    font-family: montserrat;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.container {
+    width: 35%;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #f7f5f3;
+    border-radius: 10px;
+    background-color: white;
+    font-family: montserrat;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    color: #480020;
+}
+
+.campoForm {
+    width: 100%;
+    padding: 7px;
+    margin: 10px 0;
+    border: 1px solid #e9c5d5;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: montserrat
+}
+
+#buttonSubmit {
+    background-color: #F72585;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: montserrat;
+    transition: background-color 1s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#buttonSubmit:hover {
+    background-color: #7209B7;
+}
+
+body {
+    background-color: #f0e6f4;
+    font-family: montserrat;
+    margin: 0;
+    padding: 0;
+}
+
+#jogadorasCadastradas {
+    text-align: center;
+    color: #7209B7;
+    font-family: montserrat;
+    margin-bottom: 20px;
+    margin-top: 60px;
+    font-size: 30px;
+}
+
+#cadastro {
+    text-align: center;
+    color: #7209B7;
+    font-family: montserrat;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 30px;
+}
