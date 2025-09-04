@@ -92,3 +92,42 @@ function loadCards(){
         jogadoras = JSON.parse(playersInfo);
     }
 }
+
+
+// ----------- CREATE -------------
+
+// PASSO A PASSO: 
+// 1- Ouvir o evento de envio de formulario
+function addJogadora(event){
+    event.preventDefault(); // evita o reload da página
+
+    const nome = document.querySelector("#nome").value;
+   
+    const posicao = document.querySelector("#posicao").value;
+    const clube = document.querySelector("#clube").value;
+    const foto = document.querySelector("#foto").value;
+   
+    const gols = document.querySelector("#gols").value;
+    const assistencias = document.querySelector("#assistencias").value;
+    const jogos = document.querySelector("#jogos").value;
+
+    const novaJogadora = {
+        nome: nome,
+        posicao: posicao,
+        clube: clube,
+        foto: foto,
+        gols: Number(gols), // Converter para número
+        assistencias: Number(assistencias),
+        jogos: Number(jogos),
+        favorita: false,
+        date: new Date().toLocaleString() 
+    }
+
+    jogadoras.unshift(novaJogadora); // UNSHIFT: Adiciona a nova jogadora no inicio do array
+
+    alert("Jogadora adicionada com sucesso!");
+    document.querySelector("novaJogadora").reset(); // Limpa o formulário
+
+    displayPlayers();
+    saveCards();
+}

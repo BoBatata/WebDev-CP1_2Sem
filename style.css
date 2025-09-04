@@ -1,0 +1,62 @@
+/* COLOR PALLETE: 
+EF476F
+FFD166
+06D6A0
+118AB2
+073B4C */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+header {
+    text-align: center;
+    background-color: #EF476F;
+    color: white;
+    padding: 10px 0;
+    font-family: montserrat;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.container {
+    width: 35%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #06D6A0;
+    border-radius: 10px;
+    background-color: white;
+    font-family: montserrat;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.campoForm {
+    width: 100%;
+    padding: 7px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: montserrat
+}
+
+#buttonSubmit {
+    background-color: #FFD166;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: montserrat;
+    transition: background-color 1s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#buttonSubmit:hover {
+    background-color: #eea700;
+}
+
+body {
+    background-color: #A8DADC;
+    font-family: montserrat;
+    margin: 0;
+    padding: 0;
+}
