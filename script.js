@@ -86,8 +86,8 @@ function displayPlayers(){
             <p class="jogadorasInfos">${cardInfo.jogos}</p> 
 
             ${cardInfo.favorita 
-                ? `<img src="./images/starOn.png" alt="Favorita" style="max-width:50px;" class="estrla" data-index="${index}">` 
-                : `<img src="./images/starOff.png" alt="Não favorita" style="max-width:50px;" class="star" data-index="${index}">`}
+                ? `<img src="./images/starOn.png" alt="Favorita" style="max-width:30px;" class="starFavorita" data-index="${index}">` 
+                : `<img src="./images/starOff.png" alt="Não favorita" style="max-width:30px;" class="starFavorita" data-index="${index}">`}
             <button class="btnEditar" data-index="${index}">Editar</button>
         `;
 
