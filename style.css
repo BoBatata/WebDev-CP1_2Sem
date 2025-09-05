@@ -149,10 +149,10 @@ body {
     
 }
 
-#estrela {
-    width: 30px;
+.starFavorita {
+    width: 10px;
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 10px;
     cursor: pointer;
 }
