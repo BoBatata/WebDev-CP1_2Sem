@@ -3,7 +3,7 @@ let jogadoras = [
     "nome": "Andressa Alves",
     "posicao": "Meio-campo",
     "clube": "Corinthians",
-    "foto": "https://example.com/andressa.jpg",
+    "foto": "https://static.corinthians.com.br/uploads/17340952198d8818c8e140c64c743113f563cf750f.jpg",
     "gols": 15,
     "assistencias": 10,
     "jogos": 28,
@@ -13,7 +13,7 @@ let jogadoras = [
     "nome": "Dayana Rodríguez",
     "posicao": "Meio-campo",
     "clube": "Corinthians",
-    "foto": "./images/pedro cuba i nicolaix.jpg",
+    "foto": "https://static.corinthians.com.br/uploads/175094526199472a1c51895312eb49e4ae3cdac3bf.png",
     "gols": 5,
     "assistencias": 12,
     "jogos": 30,
@@ -23,7 +23,7 @@ let jogadoras = [
     "nome": "Mariza",
     "posicao": "Zagueira",
     "clube": "Corinthians",
-    "foto": "https://example.com/mariza.jpg",
+    "foto": "https://static.corinthians.com.br/uploads/1750946630c7b03782920d35145eb4c97556d194a3.png",
     "gols": 2,
     "assistencias": 1,
     "jogos": 32,
@@ -33,7 +33,7 @@ let jogadoras = [
     "nome": "Thaís Regina",
     "posicao": "Zagueira",
     "clube": "Corinthians",
-    "foto": "https://example.com/thais.jpg",
+    "foto": "https://static.corinthians.com.br/uploads/17509469717a68443f5c80d181c42967cd71612af1.png",
     "gols": 1,
     "assistencias": 2,
     "jogos": 25,
@@ -43,7 +43,7 @@ let jogadoras = [
     "nome": "Letícia Teles",
     "posicao": "Zagueira",
     "clube": "Corinthians",
-    "foto": "https://example.com/leticia.jpg",
+    "foto": "https://static.corinthians.com.br/uploads/1750946369cdcb2f5c7b071143529ef7f2705dfbc4.png",
     "gols": 0,
     "assistencias": 0,
     "jogos": 18,
@@ -68,18 +68,28 @@ function displayPlayers(){
 
     jogadoras.forEach((cardInfo, index) => {
         const cardElement = document.createElement('div');
+        cardElement.classList.add("card-jogadora");
         
         cardElement.innerHTML = `
-            <h1>${cardInfo.nome}</h1>
-            <h2>${cardInfo.posicao}</h2>
-            <p>${cardInfo.clube}</p>
-            <img src="${cardInfo.foto}"> </img>
-            <p>${cardInfo.gols}</p>
-            <p>${cardInfo.assistencias}</p>
-            <p>${cardInfo.jogos}</p> 
-            ${cardInfo.favorita ? `<img src="/images/starOff.png" alt="Imagem do post" style="max-width:50px;">` : `<img src="/images/starOn.png" alt="Imagem do post" style="max-width:50px;">`}
-            <button class="btnEditar"data-index(${index})">Editar</button>
-            `;
+            <img src="${cardInfo.foto}" alt="${cardInfo.nome}" class="card-jogadora">
+            
+            <h1 class="jogadorasInfos">${cardInfo.nome}</h1>
+            
+            <h2 class="jogadorasInfos">${cardInfo.posicao}</h2>
+            
+            <p class="jogadorasInfos">${cardInfo.clube}</p>
+            
+            <p class="jogadorasInfos">${cardInfo.gols}</p>
+            
+            <p class="jogadorasInfos">${cardInfo.assistencias}</p>
+            
+            <p class="jogadorasInfos">${cardInfo.jogos}</p> 
+
+            ${cardInfo.favorita 
+                ? `<img src="./images/starOn.png" alt="Favorita" style="max-width:50px;" class="estrla" data-index="${index}">` 
+                : `<img src="./images/starOff.png" alt="Não favorita" style="max-width:50px;" class="star" data-index="${index}">`}
+            <button class="btnEditar" data-index="${index}">Editar</button>
+        `;
 
         playerCardList.append(cardElement);
     })
@@ -129,6 +139,11 @@ function addJogadora(event){
         date: new Date().toLocaleString() 
     }
 
+    if (!nome || !posicao || !clube || !foto || !gols || !assistencias || !jogos) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
+
     jogadoras.unshift(novaJogadora); // UNSHIFT: Adiciona a nova jogadora no inicio do array
 
     alert("Jogadora adicionada com sucesso!");
@@ -149,3 +164,16 @@ function editarInfo(index){
 
     displayPosts();
 }
+
+function salvarPosts(){
+    localStorage.setItem("posts", JSON.stringify(posts)); // Transforma em string (imagens e etc)
+}
+
+function carregarPosts(){
+    const postsGuardados = localStorage.getItem("posts");
+    if(postsGuardados){
+        posts = JSON.parse(postsGuardados)
+    }
+}
+
+
