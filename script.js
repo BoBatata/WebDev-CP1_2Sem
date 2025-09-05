@@ -13,7 +13,7 @@ let jogadoras = [
     "nome": "Dayana Rodríguez",
     "posicao": "Meio-campo",
     "clube": "Corinthians",
-    "foto": "https://example.com/dayana.jpg",
+    "foto": "./images/pedro cuba i nicolaix.jpg",
     "gols": 5,
     "assistencias": 12,
     "jogos": 30,
@@ -76,9 +76,10 @@ function displayPlayers(){
             <img src="${cardInfo.foto}"> </img>
             <p>${cardInfo.gols}</p>
             <p>${cardInfo.assistencias}</p>
-            <p>${cardInfo.jogos}</p>
+            <p>${cardInfo.jogos}</p> 
             ${cardInfo.favorita ? `<img src="/images/starOff.png" alt="Imagem do post" style="max-width:50px;">` : `<img src="/images/starOn.png" alt="Imagem do post" style="max-width:50px;">`}
-        `;
+            <button class="btnEditar"data-index(${index})">Editar</button>
+            `;
 
         playerCardList.append(cardElement);
     })
@@ -135,4 +136,16 @@ function addJogadora(event){
 
     displayPlayers();
     saveCards();
+}
+
+
+// ----------- UPDATE -------------
+
+function editarInfo(index){
+    const novaInfo = prompt('Editar informações da jogadora:');
+    posts[index].text = novoTexto;
+
+    salvarPosts();
+
+    displayPosts();
 }
