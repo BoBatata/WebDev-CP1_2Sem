@@ -54,6 +54,7 @@ let jogadoras = [
 window.onload = function(){
     loadCards();
     displayPlayers();
+    removeJogadora();
 
     document.querySelector("#novaJogadora").addEventListener("submit", addJogadora);
 
@@ -73,22 +74,23 @@ function displayPlayers(){
         cardElement.innerHTML = `
             <img src="${cardInfo.foto}" alt="${cardInfo.nome}" class="card-jogadora">
             
-            <h1 class="jogadorasInfos">${cardInfo.nome}</h1>
+            <h1 class="jogadorasInfos">Nome: ${cardInfo.nome}</h1>
             
-            <h2 class="jogadorasInfos">${cardInfo.posicao}</h2>
+            <h2 class="jogadorasInfos">Posição: ${cardInfo.posicao}</h2>
             
-            <p class="jogadorasInfos">${cardInfo.clube}</p>
+            <p class="jogadorasInfos">Clube: ${cardInfo.clube}</p>
             
-            <p class="jogadorasInfos">${cardInfo.gols}</p>
+            <p class="jogadorasInfos">Gols: ${cardInfo.gols}</p>
             
-            <p class="jogadorasInfos">${cardInfo.assistencias}</p>
+            <p class="jogadorasInfos">Assistências: ${cardInfo.assistencias}</p>
             
-            <p class="jogadorasInfos">${cardInfo.jogos}</p> 
+            <p class="jogadorasInfos">Jogos: ${cardInfo.jogos}</p> 
 
             ${cardInfo.favorita 
                 ? `<img src="./images/starOn.png" alt="Favorita" style="max-width:30px;" class="starFavorita" data-index="${index}">` 
                 : `<img src="./images/starOff.png" alt="Não favorita" style="max-width:30px;" class="starFavorita" data-index="${index}">`}
             <button class="btnEditar" data-index="${index}">Editar</button>
+            <button class="btnExcluir" data-index="${index}">Excluir</button>
         `;
 
         playerCardList.append(cardElement);
@@ -150,6 +152,7 @@ function addJogadora(event){
     document.querySelector("#novaJogadora").reset(); // Limpa o formulário
 
     displayPlayers();
+    removeJogadora();
     saveCards();
 }
 
@@ -176,4 +179,19 @@ function carregarPosts(){
     }
 }
 
+// ----------- DELETE -------------
 
+function removeJogadora() {
+    document.querySelectorAll(".btnExcluir").forEach(function(botaoExcluir) {
+        botaoExcluir.addEventListener("click", function() {
+            const index = botaoExcluir.getAttribute('data-index');
+            const confirmacao = confirm("Tem certeza que deseja excluir esta jogadora?");
+            if (confirmacao) {
+                jogadoras.splice(index, 1);
+                displayPlayers();
+            saveCards();
+            alert("Jogadora removida com sucesso!");
+            }
+        });
+    });
+}

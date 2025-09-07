@@ -178,3 +178,20 @@ body {
     background-color: #5709b7;
 }
 
+.btnExcluir {
+    background-color: #a10b0b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: montserrat;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+.btnExcluir:hover {
+    transform: translateY(-2px);
+    background-color: #c72c2c;
+}
