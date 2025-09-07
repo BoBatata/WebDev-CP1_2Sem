@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CP-1 WebDev</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+        <header>
+        <h1> Checkpoint 4 </h1>
+    </header>
+
+
+<h1 id="cadastro"> Cadastro de Jogadoras </h1>
+<div class="container">
+
+     <!-- Formulário para criar um novo post -->
+
+     <form id="novaJogadora">
+
+        <i class="fa-regular fa-image"></i> <label for="foto"> Insira uma foto da jogadora:</label><br>
+        <input type="text" class="campoForm" id="foto" placeholder="Insira a URL aqui"><br>
+
+        <label for="nome"> Nome da jogadora:</label><br>
+        <textarea class="campoForm" id="nome" rows="1" cols="30" placeholder="Ex: Isabela "></textarea><br>
+        
+        <label for="posicao"> Posição jogada:</label><br>
+        <textarea class="campoForm" id="posicao" rows="1" cols="30" placeholder="Ex: Atacante"></textarea><br>
+        
+        <label for="clube"> Clube:</label><br>
+        <textarea class="campoForm" id="clube" rows="1" cols="30" placeholder="Ex: Corinthians"></textarea><br>
+        
+        <label for="gols"> Quantidade gols feitos:</label><br>
+        <textarea class="campoForm" id="gols" rows="1" cols="30" placeholder="Ex: 23"></textarea><br>
+        
+        <label for="assistencias"> Quantidade de assistências feitas:</label><br>
+        <textarea class="campoForm" id="assistencias" rows="1" cols="30" placeholder="Ex: 19"></textarea><br>
+        
+        <label for="jogos"> Quantidade de jogos jogados:</label><br>
+        <textarea class="campoForm" id="jogos" rows="1" cols="30" placeholder="Ex: 45"></textarea><br>
+        <button type="submit" class="campoForm" id="buttonSubmit">Adicionar Jogadora</button>
+    </form>
+</div>
+    <h1 id="jogadorasCadastradas"> Jogadoras Cadastradas </h1>
+
+
+    <!-- Botao de editar -->
+    <p contenteditable="true" id="editableContent"></p>
+
+    <!-- Filtros e ordenação -->
+
+        <div class="filtros-container">
+        <input type="text" id="buscarNome" placeholder="Buscar por nome ou posição">
+        
+        <select id="filtroTime">
+            <option value="">Todos os times</option>
+            <option value="Corinthians">Corinthians</option>
+            <option value="São Paulo">São Paulo</option>
+            <option value="Palmeiras">Palmeiras</option>
+            <option value="Santos">Santos</option>
+        </select>
+        
+        <button id="ordenarNome">Ordenar por Nome</button>
+        <button id="ordenarPosicao">Ordenar por Posição</button>
+    </div>
+
+
+    <!-- Lista de jogadoras -->
+<div class="container-jogadoras">
+    <div id="cardList"></div>
+</div>
+
+
+<script src="https://kit.fontawesome.com/129b440489.js" crossorigin="anonymous"></script>
+<div id="cardList"></div>
+<script src="script.js"></script>
+
+</body>
+</html>

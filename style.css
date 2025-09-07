@@ -1,0 +1,251 @@
+/* COLOR PALLETE: 
+F72585 rosa
+7209B7 roxo
+4361EE azul
+4CC9F0 azul claro
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+
+header {
+    text-align: center;
+    background-color: #7209B7;
+    color: white;
+    padding: 10px 0;
+    font-family: montserrat;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+/* ------ CONTAINER FORMULARIO -------- */
+
+#cadastro {
+    text-align: center;
+    color: #7209B7;
+    font-family: montserrat;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+
+.container {
+    width: 35%;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #f7f5f3;
+    border-radius: 10px;
+    background-color: white;
+    font-family: montserrat;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    color: #480020;
+}
+
+.campoForm {
+    width: 100%;
+    padding: 7px;
+    margin: 10px 0;
+    border: 1px solid #e9c5d5;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: montserrat
+}
+
+/* ------- BOTÃO FORMULARIO -------- */
+
+#buttonSubmit {
+    background-color: #F72585;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: montserrat;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#buttonSubmit:hover {
+    background-color: #7209B7;
+    transform: translateY(-2px);
+}
+
+body {
+    background-color: #f0e6f4;
+    font-family: montserrat;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ----- H1 ------ */
+#jogadorasCadastradas {
+    text-align: center;
+    color: #7209B7;
+    font-family: montserrat;
+    margin-bottom: 20px;
+    margin-top: 60px;
+    font-size: 30px;
+}
+
+/* ----- CARTÕES JOGADORAS ----- */
+
+.container-jogadoras {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: row;
+}
+
+
+#cardList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+
+.card-jogadora {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 300px;            
+    text-align: center;
+    transition: transform 0.2s ease;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.card-jogadora:hover {
+    transform: translateY(-5px);
+}
+
+.card-jogadora img {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.jogadorasInfos {
+    font-family: montserrat;
+    color: #480020;
+    margin: 5px 0;
+    font-size: 20px;
+    
+}
+
+#estrela {
+    align-items: right;
+    position: absolute;
+    width: 24px; 
+    height: 24px; 
+    top: 10px; 
+    right: 10px; 
+    cursor: pointer; 
+}
+
+/* ----  EDITAR ---- */
+
+.btnEditar {
+    background-color: #5ab5d1;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: montserrat;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.btnEditar:hover {
+    transform: translateY(-2px);
+    background-color: #66dbff;
+}
+
+#editableContent {
+    display: none;
+}
+
+
+/* ---- EXCLUIR ---- */
+
+.btnExcluir {
+    background-color: #d10000;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: montserrat;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+.btnExcluir:hover {
+    transform: translateY(-2px);
+    background-color: #ff1717;
+}
+
+.filtros-container {
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #ffffff;
+    border: solid #f7f5f3;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 800px;
+    font-family: montserrat;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #480020;
+}
+
+.filtros-container input,
+.filtros-container select,
+.filtros-container button {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.filtros-container button {
+    background-color: #5709b7;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.filtros-container button:hover {
+    background-color: #8827ff;
+    transition: all 0.5s;
+    transform: translateY(-2px);
+}
+
+#buscarNome {
+    flex: 1;
+    min-width: 200px;
+}
