@@ -210,10 +210,6 @@ function saveEdit(index) {
   alert("Jogadora editada com sucesso!");
 }
 
-// ----------- FAVORITAR -------------
-
-
-
 // ----------- DELETE -------------
 
 function removeJogadora() {

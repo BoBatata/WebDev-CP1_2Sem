@@ -163,7 +163,7 @@ body {
 /* ----  EDITAR ---- */
 
 .btnEditar {
-    background-color: #4361EE;
+    background-color: #5ab5d1;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -179,21 +179,18 @@ body {
 
 .btnEditar:hover {
     transform: translateY(-2px);
-    background-color: #5709b7;
+    background-color: #66dbff;
 }
 
-[contenteditable="true"] {
-    outline: 1px dashed #e9c5d5; 
-    background-color: #f5f1fa; 
-    border-radius: 5px;
-    padding: 2px 4px;
+#editableContent {
+    display: none;
 }
 
 
 /* ---- EXCLUIR ---- */
 
 .btnExcluir {
-    background-color: #a10b0b;
+    background-color: #d10000;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -207,19 +204,23 @@ body {
 }
 .btnExcluir:hover {
     transform: translateY(-2px);
-    background-color: #c72c2c;
+    background-color: #ff1717;
 }
 
 .filtros-container {
     margin: 20px auto;
     padding: 15px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
+    background-color: #ffffff;
+    border: solid #f7f5f3;
+    border-radius: 10px;
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
     align-items: center;
     max-width: 800px;
+    font-family: montserrat;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #480020;
 }
 
 .filtros-container input,
@@ -239,8 +240,9 @@ body {
 }
 
 .filtros-container button:hover {
-    background-color: #5709b7c2;
-    transition: all 0.3s;
+    background-color: #8827ff;
+    transition: all 0.5s;
+    transform: translateY(-2px);
 }
 
 #buscarNome {
