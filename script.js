@@ -73,7 +73,7 @@ function displayPlayers(jogadorasFiltradas = jogadoras){
         cardElement.classList.add("card-jogadora");
         
         cardElement.innerHTML = `
-            <img src="${cardInfo.foto}" alt="${cardInfo.nome}" class="card-jogadora">
+            <img src="${cardInfo.foto}" alt="${cardInfo.nome}" class="foto-jogadora">
             
             <h1 class="jogadorasInfos">Nome: ${cardInfo.nome}</h1>
             
@@ -87,16 +87,29 @@ function displayPlayers(jogadorasFiltradas = jogadoras){
             
             <p class="jogadorasInfos">Jogos: ${cardInfo.jogos}</p> 
 
-            ${cardInfo.favorita 
-                ? `<img src="./images/starOn.png" alt="Favorita" style="max-width:30px;" class="starFavorita" data-index="${index}">` 
-                : `<img src="./images/starOff.png" alt="Não favorita" style="max-width:30px;" class="starFavorita" data-index="${index}">`}
+            <img
+            src="${cardInfo.favorita ? '/images/starOn.png' : '/images/starOff.png'}" id="estrela" 
+            data-index="${index}" 
+            alt="Favoritar"
+            >
+            
             <button class="btnEditar" onclick="enableEdit(${index})">Editar</button>
             <button class="btnExcluir" data-index="${index}">Excluir</button>
         `;
 
         playerCardList.append(cardElement);
     })
+
+     document.querySelectorAll("#estrela").forEach(star => {
+        star.addEventListener("click", (e) => {
+            const i = e.target.getAttribute("data-index");
+            jogadoras[i].favorita = !jogadoras[i].favorita; 
+            saveCards(); 
+            displayPlayers(); 
+        });
+    });
 }
+
 
 //Salva o banco de dados no localStorage e transforma em um JSON.
 function saveCards(){
@@ -192,8 +205,13 @@ function saveEdit(index) {
 
   saveCards(); 
   displayPlayers(); 
-  removeJogadora(); // Reativa os event listeners
+  removeJogadora(); 
+
+  alert("Jogadora editada com sucesso!");
 }
+
+// ----------- FAVORITAR -------------
+
 
 
 // ----------- DELETE -------------
