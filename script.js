@@ -187,14 +187,15 @@ function removeJogadora() {
     document.querySelectorAll(".btnExcluir").forEach(function(botaoExcluir) {
         botaoExcluir.addEventListener("click", function() {
             // Coleta o índice da jogadora a ser excluída através do atributo data-index
-            const index = botaoExcluir.getAttribute('data-index');
+            const index = parseInt(botaoExcluir.getAttribute('data-index'));
             const confirmacao = confirm("Tem certeza que deseja excluir esta jogadora?");
             if (confirmacao) {
                 // Remove a jogadora do array usando o índice
                 jogadoras.splice(index, 1);
                 displayPlayers();
-            saveCards();
-            alert("Jogadora removida com sucesso!");
+                removeJogadora(); 
+                saveCards();
+                alert("Jogadora removida com sucesso!");
             }
         });
     });
@@ -219,14 +220,6 @@ function setupFiltros() {
     document.querySelector("#ordenarPosicao").addEventListener("click", function() {
         jogadoras.sort((a, b) => a.posicao.localeCompare(b.posicao));
         aplicarFiltros();
-    });
-    
-    // Limpar filtros
-    document.querySelector("#limparFiltros").addEventListener("click", function() {
-        document.querySelector("#buscarNome").value = "";
-        document.querySelector("#filtroTime").value = "";
-        displayPlayers();
-        removeJogadora();
     });
 }
 
@@ -288,4 +281,5 @@ function saveEdit(index) {
 
   saveCards(); 
   displayPlayers(); 
+  removeJogadora(); // Reativa os event listeners
 }
