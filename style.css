@@ -179,7 +179,61 @@ body {
     background-color: #5709b7;
 }
 
-[contenteditable="true"] {
+.btnExcluir {
+    background-color: #a10b0b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: montserrat;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+.btnExcluir:hover {
+    transform: translateY(-2px);
+    background-color: #c72c2c;
+}
+
+.filtros-container {
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 800px;
+}
+
+.filtros-container input,
+.filtros-container select,
+.filtros-container button {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.filtros-container button {
+    background-color: #5709b7;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.filtros-container button:hover {
+    background-color: #5709b7c2;
+    transition: all 0.3s;
+}
+
+#buscarNome {
+    flex: 1;
+    min-width: 200px;
+}[contenteditable="true"] {
     outline: none; 
     background-color: #f7f6f8; 
     border-radius: 5px;

@@ -54,6 +54,8 @@ let jogadoras = [
 window.onload = function(){
     loadCards();
     displayPlayers();
+    removeJogadora();
+    setupFiltros();
 
     document.querySelector("#novaJogadora").addEventListener("submit", addJogadora);
 
@@ -62,34 +64,34 @@ window.onload = function(){
 
 
 // Carrega os Cards e exibe na página.
-function displayPlayers(){
+function displayPlayers(jogadorasFiltradas = jogadoras){
     const playerCardList = document.getElementById('cardList');
     playerCardList.innerHTML = '';
 
-    jogadoras.forEach((cardInfo, index) => {
+    jogadorasFiltradas.forEach((cardInfo, index) => {
         const cardElement = document.createElement('div');
         cardElement.classList.add("card-jogadora");
         
         cardElement.innerHTML = `
             <img src="${cardInfo.foto}" alt="${cardInfo.nome}" class="card-jogadora">
             
-            <h1 class="jogadorasInfos">${cardInfo.nome}</h1>
+            <h1 class="jogadorasInfos">Nome: ${cardInfo.nome}</h1>
             
-            <h2 class="jogadorasInfos">${cardInfo.posicao}</h2>
+            <h2 class="jogadorasInfos">Posição: ${cardInfo.posicao}</h2>
             
-            <p class="jogadorasInfos">${cardInfo.clube}</p>
+            <p class="jogadorasInfos">Clube: ${cardInfo.clube}</p>
             
-            <p class="jogadorasInfos">${cardInfo.gols}</p>
+            <p class="jogadorasInfos">Gols: ${cardInfo.gols}</p>
             
-            <p class="jogadorasInfos">${cardInfo.assistencias}</p>
+            <p class="jogadorasInfos">Assistências: ${cardInfo.assistencias}</p>
             
-            <p class="jogadorasInfos">${cardInfo.jogos}</p> 
+            <p class="jogadorasInfos">Jogos: ${cardInfo.jogos}</p> 
 
             ${cardInfo.favorita 
                 ? `<img src="./images/starOn.png" alt="Favorita" style="max-width:30px;" class="starFavorita" data-index="${index}">` 
                 : `<img src="./images/starOff.png" alt="Não favorita" style="max-width:30px;" class="starFavorita" data-index="${index}">`}
-            <button class="btnEditar" onclick="enableEdit(${index})">Editar</button>
-
+            <button class="btnEditar" data-index="${index}">Editar</button>
+            <button class="btnExcluir" data-index="${index}">Excluir</button>
         `;
 
         playerCardList.append(cardElement);
@@ -151,6 +153,7 @@ function addJogadora(event){
     document.querySelector("#novaJogadora").reset(); // Limpa o formulário
 
     displayPlayers();
+    removeJogadora();
     saveCards();
 }
 
@@ -177,8 +180,80 @@ function carregarPosts(){
     }
 }
 
+// ----------- DELETE -------------
 
-// ----------- EDITAR/UPDATE -------------
+function removeJogadora() {
+    // Adiciona evento de clique a todos os botões "Excluir"
+    document.querySelectorAll(".btnExcluir").forEach(function(botaoExcluir) {
+        botaoExcluir.addEventListener("click", function() {
+            // Coleta o índice da jogadora a ser excluída através do atributo data-index
+            const index = botaoExcluir.getAttribute('data-index');
+            const confirmacao = confirm("Tem certeza que deseja excluir esta jogadora?");
+            if (confirmacao) {
+                // Remove a jogadora do array usando o índice
+                jogadoras.splice(index, 1);
+                displayPlayers();
+            saveCards();
+            alert("Jogadora removida com sucesso!");
+            }
+        });
+    });
+}
+
+// ----------- FILTROS E BUSCA -------------
+
+function setupFiltros() {
+    // Busca por nome ou posição
+    document.querySelector("#buscarNome").addEventListener("input", aplicarFiltros);
+    
+    // Filtro por time
+    document.querySelector("#filtroTime").addEventListener("change", aplicarFiltros);
+    
+    // Ordenar por nome
+    document.querySelector("#ordenarNome").addEventListener("click", function() {
+        jogadoras.sort((a, b) => a.nome.localeCompare(b.nome));
+        aplicarFiltros();
+    });
+    
+    // Ordenar por posição
+    document.querySelector("#ordenarPosicao").addEventListener("click", function() {
+        jogadoras.sort((a, b) => a.posicao.localeCompare(b.posicao));
+        aplicarFiltros();
+    });
+    
+    // Limpar filtros
+    document.querySelector("#limparFiltros").addEventListener("click", function() {
+        document.querySelector("#buscarNome").value = "";
+        document.querySelector("#filtroTime").value = "";
+        displayPlayers();
+        removeJogadora();
+    });
+}
+
+function aplicarFiltros() {
+    const busca = document.querySelector("#buscarNome").value.toLowerCase();
+    const timeFilter = document.querySelector("#filtroTime").value;
+    
+    let jogadorasFiltradas = jogadoras;
+    
+    // Filtro por nome ou posição
+    if (busca) {
+        jogadorasFiltradas = jogadorasFiltradas.filter(jogadora => 
+            jogadora.nome.toLowerCase().includes(busca) || 
+            jogadora.posicao.toLowerCase().includes(busca)
+        );
+    }
+    
+    // Filtro por time
+    if (timeFilter) {
+        jogadorasFiltradas = jogadorasFiltradas.filter(jogadora => 
+            jogadora.clube === timeFilter
+        );
+    }
+    
+    displayPlayers(jogadorasFiltradas);
+    removeJogadora();
+}// ----------- EDITAR/UPDATE -------------
 
 function enableEdit(index) {
   const card = document.querySelectorAll('#cardList > div')[index]; 

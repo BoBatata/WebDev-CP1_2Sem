@@ -40,12 +40,27 @@
         
         <label for="jogos"> Quantidade de jogos jogados:</label><br>
         <textarea class="campoForm" id="jogos" rows="1" cols="30" placeholder="Ex: 45"></textarea><br>
-        
-        
         <button type="submit" class="campoForm" id="buttonSubmit">Adicionar Jogadora</button>
     </form>
 </div>
     <h1 id="jogadorasCadastradas"> Jogadoras Cadastradas </h1>
+
+        <div class="filtros-container">
+        <input type="text" id="buscarNome" placeholder="Buscar por nome ou posição">
+        
+        <select id="filtroTime">
+            <option value="">Todos os times</option>
+            <option value="Corinthians">Corinthians</option>
+            <option value="São Paulo">São Paulo</option>
+            <option value="Palmeiras">Palmeiras</option>
+            <option value="Santos">Santos</option>
+        </select>
+        
+        <button id="ordenarNome">Ordenar por Nome</button>
+        <button id="ordenarPosicao">Ordenar por Posição</button>
+        <button id="limparFiltros">Limpar Filtros</button>
+    </div>
+
 
     <!-- Lista de jogadoras -->
 <div class="container-jogadoras">
