@@ -55,6 +55,7 @@ window.onload = function(){
     loadCards();
     displayPlayers();
     removeJogadora();
+    setupFiltros();
 
     document.querySelector("#novaJogadora").addEventListener("submit", addJogadora);
 
@@ -63,11 +64,11 @@ window.onload = function(){
 
 
 // Carrega os Cards e exibe na página.
-function displayPlayers(){
+function displayPlayers(jogadorasFiltradas = jogadoras){
     const playerCardList = document.getElementById('cardList');
     playerCardList.innerHTML = '';
 
-    jogadoras.forEach((cardInfo, index) => {
+    jogadorasFiltradas.forEach((cardInfo, index) => {
         const cardElement = document.createElement('div');
         cardElement.classList.add("card-jogadora");
         
@@ -182,11 +183,14 @@ function carregarPosts(){
 // ----------- DELETE -------------
 
 function removeJogadora() {
+    // Adiciona evento de clique a todos os botões "Excluir"
     document.querySelectorAll(".btnExcluir").forEach(function(botaoExcluir) {
         botaoExcluir.addEventListener("click", function() {
+            // Coleta o índice da jogadora a ser excluída através do atributo data-index
             const index = botaoExcluir.getAttribute('data-index');
             const confirmacao = confirm("Tem certeza que deseja excluir esta jogadora?");
             if (confirmacao) {
+                // Remove a jogadora do array usando o índice
                 jogadoras.splice(index, 1);
                 displayPlayers();
             saveCards();
@@ -194,4 +198,59 @@ function removeJogadora() {
             }
         });
     });
+}
+
+// ----------- FILTROS E BUSCA -------------
+
+function setupFiltros() {
+    // Busca por nome ou posição
+    document.querySelector("#buscarNome").addEventListener("input", aplicarFiltros);
+    
+    // Filtro por time
+    document.querySelector("#filtroTime").addEventListener("change", aplicarFiltros);
+    
+    // Ordenar por nome
+    document.querySelector("#ordenarNome").addEventListener("click", function() {
+        jogadoras.sort((a, b) => a.nome.localeCompare(b.nome));
+        aplicarFiltros();
+    });
+    
+    // Ordenar por posição
+    document.querySelector("#ordenarPosicao").addEventListener("click", function() {
+        jogadoras.sort((a, b) => a.posicao.localeCompare(b.posicao));
+        aplicarFiltros();
+    });
+    
+    // Limpar filtros
+    document.querySelector("#limparFiltros").addEventListener("click", function() {
+        document.querySelector("#buscarNome").value = "";
+        document.querySelector("#filtroTime").value = "";
+        displayPlayers();
+        removeJogadora();
+    });
+}
+
+function aplicarFiltros() {
+    const busca = document.querySelector("#buscarNome").value.toLowerCase();
+    const timeFilter = document.querySelector("#filtroTime").value;
+    
+    let jogadorasFiltradas = jogadoras;
+    
+    // Filtro por nome ou posição
+    if (busca) {
+        jogadorasFiltradas = jogadorasFiltradas.filter(jogadora => 
+            jogadora.nome.toLowerCase().includes(busca) || 
+            jogadora.posicao.toLowerCase().includes(busca)
+        );
+    }
+    
+    // Filtro por time
+    if (timeFilter) {
+        jogadorasFiltradas = jogadorasFiltradas.filter(jogadora => 
+            jogadora.clube === timeFilter
+        );
+    }
+    
+    displayPlayers(jogadorasFiltradas);
+    removeJogadora();
 }
