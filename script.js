@@ -90,7 +90,7 @@ function displayPlayers(jogadorasFiltradas = jogadoras){
             ${cardInfo.favorita 
                 ? `<img src="./images/starOn.png" alt="Favorita" style="max-width:30px;" class="starFavorita" data-index="${index}">` 
                 : `<img src="./images/starOff.png" alt="Não favorita" style="max-width:30px;" class="starFavorita" data-index="${index}">`}
-            <button class="btnEditar" data-index="${index}">Editar</button>
+            <button class="btnEditar" onclick="enableEdit(${index})">Editar</button>
             <button class="btnExcluir" data-index="${index}">Excluir</button>
         `;
 
@@ -157,28 +157,44 @@ function addJogadora(event){
     saveCards();
 }
 
+// ----------- EDITAR/UPDATE -------------
 
-// ----------- UPDATE -------------
+function enableEdit(index) {
+  const card = document.querySelectorAll('#cardList > div')[index]; 
+  const infos = card.querySelectorAll('.jogadorasInfos'); 
+  const img = card.querySelector('img');
+  img.outerHTML = `<input type="text" value="${img.src}" class="editFoto" />`;
 
-function editarInfo(index){
-    const novaInfo = prompt('Editar informações da jogadora:');
-    posts[index].text = novoTexto;
+  infos.forEach(info => {
+    info.contentEditable = "true";   
+    info.style.border = "1px traced #e9c5d5"; 
+  });
 
-    salvarPosts();
-
-    displayPosts();
+  
+  const btn = card.querySelector('.btnEditar');
+  btn.textContent = "Salvar";
+  btn.onclick = function () { saveEdit(index) }; 
 }
 
-function salvarPosts(){
-    localStorage.setItem("posts", JSON.stringify(posts)); // Transforma em string (imagens e etc)
+function saveEdit(index) {
+  const card = document.querySelectorAll('#cardList > div')[index]; 
+  const infos = card.querySelectorAll('.jogadorasInfos');
+  const newFoto = card.querySelector('.editFoto').value;
+
+
+  jogadoras[index].nome = infos[0].textContent;
+  jogadoras[index].posicao = infos[1].textContent;
+  jogadoras[index].clube = infos[2].textContent;
+  jogadoras[index].gols = Number(infos[3].textContent);
+  jogadoras[index].assistencias = Number(infos[4].textContent);
+  jogadoras[index].jogos = Number(infos[5].textContent);
+  jogadoras[index].foto = newFoto;
+
+  saveCards(); 
+  displayPlayers(); 
+  removeJogadora(); // Reativa os event listeners
 }
 
-function carregarPosts(){
-    const postsGuardados = localStorage.getItem("posts");
-    if(postsGuardados){
-        posts = JSON.parse(postsGuardados)
-    }
-}
 
 // ----------- DELETE -------------
 
@@ -246,40 +262,5 @@ function aplicarFiltros() {
     
     displayPlayers(jogadorasFiltradas);
     removeJogadora();
-}// ----------- EDITAR/UPDATE -------------
-
-function enableEdit(index) {
-  const card = document.querySelectorAll('#cardList > div')[index]; 
-  const infos = card.querySelectorAll('.jogadorasInfos'); 
-  const img = card.querySelector('img');
-  img.outerHTML = `<input type="text" value="${img.src}" class="editFoto" />`;
-
-  infos.forEach(info => {
-    info.contentEditable = "true";   
-    info.style.border = "1px traced #e9c5d5"; 
-  });
-
-  
-  const btn = card.querySelector('.btnEditar');
-  btn.textContent = "Salvar";
-  btn.onclick = function () { saveEdit(index) }; 
 }
 
-function saveEdit(index) {
-  const card = document.querySelectorAll('#cardList > div')[index]; 
-  const infos = card.querySelectorAll('.jogadorasInfos');
-  const newFoto = card.querySelector('.editFoto').value;
-
-
-  jogadoras[index].nome = infos[0].textContent;
-  jogadoras[index].posicao = infos[1].textContent;
-  jogadoras[index].clube = infos[2].textContent;
-  jogadoras[index].gols = Number(infos[3].textContent);
-  jogadoras[index].assistencias = Number(infos[4].textContent);
-  jogadoras[index].jogos = Number(infos[5].textContent);
-  jogadoras[index].foto = newFoto;
-
-  saveCards(); 
-  displayPlayers(); 
-  removeJogadora(); // Reativa os event listeners
-}

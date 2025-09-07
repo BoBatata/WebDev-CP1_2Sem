@@ -120,6 +120,7 @@ body {
 
 
 .card-jogadora {
+    position: relative;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -179,6 +180,16 @@ body {
     background-color: #5709b7;
 }
 
+[contenteditable="true"] {
+    outline: 1px dashed #e9c5d5; 
+    background-color: #f5f1fa; 
+    border-radius: 5px;
+    padding: 2px 4px;
+}
+
+
+/* ---- EXCLUIR ---- */
+
 .btnExcluir {
     background-color: #a10b0b;
     color: white;
@@ -233,9 +244,4 @@ body {
 #buscarNome {
     flex: 1;
     min-width: 200px;
-}[contenteditable="true"] {
-    outline: none; 
-    background-color: #f7f6f8; 
-    border-radius: 5px;
-    padding: 2px 4px;
 }
