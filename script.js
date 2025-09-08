@@ -69,6 +69,9 @@ function displayPlayers(jogadorasFiltradas = jogadoras){
     playerCardList.innerHTML = '';
 
     jogadorasFiltradas.forEach((cardInfo, index) => {
+        // Encontra o índice real no array original
+        const realIndex = jogadoras.findIndex(j => j === cardInfo);
+        
         const cardElement = document.createElement('div');
         cardElement.classList.add("card-jogadora");
         
@@ -89,12 +92,12 @@ function displayPlayers(jogadorasFiltradas = jogadoras){
 
             <img
             src="${cardInfo.favorita ? './images/starOn.png' : './images/starOff.png'}" id="estrela" 
-            data-index="${index}" 
+            data-index="${realIndex}" 
             alt="Favoritar"
             >
             
-            <button class="btnEditar" onclick="enableEdit(${index})">Editar</button>
-            <button class="btnExcluir" data-index="${index}">Excluir</button>
+            <button class="btnEditar" onclick="enableEdit(${realIndex})">Editar</button>
+            <button class="btnExcluir" data-index="${realIndex}">Excluir</button>
         `;
 
         playerCardList.append(cardElement);
@@ -105,7 +108,7 @@ function displayPlayers(jogadorasFiltradas = jogadoras){
             const i = e.target.getAttribute("data-index");
             jogadoras[i].favorita = !jogadoras[i].favorita; 
             saveCards(); 
-            displayPlayers(); 
+            displayPlayers(jogadorasFiltradas); 
         });
     });
 }
