@@ -88,7 +88,7 @@ function displayPlayers(jogadorasFiltradas = jogadoras){
             <p class="jogadorasInfos">Jogos: ${cardInfo.jogos}</p> 
 
             <img
-            src="${cardInfo.favorita ? './images/starOn.png' : '/images/starOff.png'}" id="estrela" 
+            src="${cardInfo.favorita ? './images/starOn.png' : './images/starOff.png'}" id="estrela" 
             data-index="${index}" 
             alt="Favoritar"
             >
