@@ -194,13 +194,13 @@ function saveEdit(index) {
   const infos = card.querySelectorAll('.jogadorasInfos');
   const newFoto = card.querySelector('.editFoto').value;
 
-
-  jogadoras[index].nome = infos[0].textContent;
-  jogadoras[index].posicao = infos[1].textContent;
-  jogadoras[index].clube = infos[2].textContent;
-  jogadoras[index].gols = Number(infos[3].textContent);
-  jogadoras[index].assistencias = Number(infos[4].textContent);
-  jogadoras[index].jogos = Number(infos[5].textContent);
+  // Remover os labels antes de salvar
+  jogadoras[index].nome = infos[0].textContent.replace('Nome: ', '');
+  jogadoras[index].posicao = infos[1].textContent.replace('Posição: ', '');
+  jogadoras[index].clube = infos[2].textContent.replace('Clube: ', '');
+  jogadoras[index].gols = Number(infos[3].textContent.replace('Gols: ', ''));
+  jogadoras[index].assistencias = Number(infos[4].textContent.replace('Assistências: ', ''));
+  jogadoras[index].jogos = Number(infos[5].textContent.replace('Jogos: ', ''));
   jogadoras[index].foto = newFoto;
 
   saveCards(); 
